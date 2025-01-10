@@ -1,0 +1,26 @@
+{"queryObj":{
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "agg:KommSummer",
+        "values": [
+          "K-4601"
+        ]
+      }
+    },
+    {
+      "code": "EkteskStatus",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "2",
+          "4"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+},"tableIdForQuery":"03027","postUrl":"https://data.ssb.no/api/v0/no/table/03027"}
