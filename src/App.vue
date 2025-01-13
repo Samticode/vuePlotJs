@@ -2,6 +2,8 @@
 import PlotChart from './components/PlotChart.vue';
 import PieDonutChart from './components/PieDonutChart.vue';
 import BarChart from './components/BarChart.vue';
+import LineChart from './components/LineChart.vue';
+
 
 </script>
 
@@ -9,7 +11,9 @@ import BarChart from './components/BarChart.vue';
   <main>
     <!-- <PlotChart /> -->
     <!-- <PieDonutChart /> -->
-    <BarChart />
+    <!-- <BarChart /> -->
+    <!-- <LineChart /> -->
+
   </main>
 </template>
 
