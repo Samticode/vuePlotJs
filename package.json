@@ -13,6 +13,9 @@
   "dependencies": {
     "@observablehq/plot": "^0.6.16",
     "d3": "^7.9.0",
+    "gsap": "^3.12.5",
+    "sass": "^1.83.4",
+    "scss": "^0.2.4",
     "vue": "^3.5.13"
   },
   "devDependencies": {
