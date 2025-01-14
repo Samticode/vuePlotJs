@@ -16,8 +16,11 @@ export default {
       { name: 'I', value: 160 }
     ];
 
+    const dwdadadawdwadawawdawdawdadw = ref(null);
+
     onMounted(() => {
-      const svg = d3.select('svg')
+      const svg = d3.select(dwdadadawdwadawawdawdawdadw.value)
+        .select('svg')
         .attr('width', 800)
         .attr('height', 400);
 
@@ -65,10 +68,19 @@ export default {
 </script>
 
 <template>
-  <svg></svg>
+  <main>
+    <div ref="dwdadadawdwadawawdawdawdadw">
+      <svg></svg>
+    </div>
+  </main>
 </template>
 
 <style scoped>
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 svg {
   display: block;
   margin: auto;

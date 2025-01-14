@@ -61,8 +61,9 @@ export default {
 </template>
 
 <style scoped>
-    svg {
-        display: block;
-        margin: auto;
-    }
+  main {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
 </style>
