@@ -10,6 +10,9 @@ body {
   background-color: #EDEDE9;
   opacity: 0;
   position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 p {

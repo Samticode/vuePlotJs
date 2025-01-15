@@ -4,7 +4,7 @@
 
 <template>
     <section class="price-section section">
-        Pris
+        pris
     </section>
 </template>
 

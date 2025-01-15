@@ -13,29 +13,26 @@ import CorrelationSection from './sections/CorrelationSection.vue';
 import VolumSection from './sections/VolumSection.vue';
 
 onMounted(() => {
-  gsap.to('body', { duration: 0.5, opacity: 1 })
-  .then(() => {
-    gsap.to('.topleft', { duration: 0.75, left: '40px', ease: 'power2.out' })
-    gsap.to('.bottomleft-div', { duration: 0.75, left: '40px', ease: 'power2.out' });
-    gsap.to('.bottomright', { duration: 0.75, right: '60px', ease: 'power2.out' });
-  });
+  const tl = gsap.timeline();
 
-  setTimeout(() => {
-    gsap.to('.topleft', { duration: 0.25, opacity: '0', ease: 'power2.out' })
-    gsap.to('.bottomleft-div', { duration: 0.25, opacity: '0', ease: 'power2.out' });
-    gsap.to('.bottomright', { duration: 0.25, opacity: '0', ease: 'power2.out' });
-
-    gsap.to('.intro-section', { duration: 0.5, padding: '20px', gap: '30px', ease: 'power2.out' });
-
-    gsap.to('.overlay-picture', { duration: 0.75, height: '70%', borderRadius: '15px', ease: 'ease' });
-  }, 3000);
+  tl.to('body', { duration: 0.5, opacity: 1 })
+    .to('.topleft', { duration: 0.75, left: '40px', ease: 'power2.out' }, '-=0.5')
+    .to('.bottomleft-div', { duration: 0.75, left: '40px', ease: 'power2.out' }, '-=0.75')
+    .to('.bottomright', { duration: 0.75, right: '60px', ease: 'power2.out' }, '-=0.75')
+    .to('.topleft', { duration: 0.25, opacity: 0, ease: 'power2.out' }, '+=3')
+    .to('.bottomleft-div', { duration: 0.25, opacity: 0, ease: 'power2.out' }, '-=0.25')
+    .to('.bottomright', { duration: 0.25, opacity: 0, ease: 'power2.out' }, '-=0.25')
+    .to('.intro-section', { duration: 0.5, padding: '20px', gap: '30px', ease: 'power2.out' })
+    .to('.overlay-picture', { duration: 0.75, height: '70%', borderRadius: '15px', ease: 'ease' }, '-=0.5');
 
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('nav p');
 
   const observer = new IntersectionObserver((entries) => {
+    let anySectionIntersecting = false;
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        anySectionIntersecting = true;
         navLinks.forEach(link => {
           link.classList.remove('active');
           if (link.textContent.toLowerCase() === entry.target.dataset.section) {
@@ -44,6 +41,15 @@ onMounted(() => {
         });
       }
     });
+
+    if (!anySectionIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.textContent.toLowerCase() === 'Volum') {
+          link.classList.add('active');
+        }
+      });
+    }
   }, { threshold: 0.5 });
 
   sections.forEach(section => {
@@ -76,13 +82,13 @@ onMounted(() => {
     </section>
 
     <nav>
+      <p>Volum</p> <!-- totaltvolum over tid -->
        <p>Salg</p> <!-- salg over tid -->
-       <p>Volum</p> <!-- totaltvolum over tid -->
        <p>Korrelasjon</p> <!-- Korrelasjon mellom pris, volum og størrelse -->
     </nav>
     
-    <PriceSection class="price-section" data-section="salg" />
     <VolumSection class="volum-section" data-section="volum" />
+    <PriceSection class="price-section" data-section="salg" />
     <CorrelationSection class="correlation-section" data-section="korrelasjon" />
 
     <!-- <PlotChart /> -->
@@ -112,6 +118,9 @@ onMounted(() => {
       flex-direction: row;
       align-items: center;
       gap: 40px;
+
+
+
 
       p {
         font-size: 2.5rem;
@@ -228,16 +237,19 @@ onMounted(() => {
     }
 
     .price-section, .volum-section, .correlation-section {
-      height: 100dvh;
+      min-height: 100dvh;
       width: 100dvw;
       padding: 20px;
-
-      display: grid;
-      place-items: center;
+    }
+    .volum-section {
     }
     .price-section {
-      margin-top: 40px;
-      height: calc(100dvh - 40px);
+    display: grid;
+      place-items: center;
+    }
+    .correlation-section {
+      display: grid;
+      place-items: center;
     }
   }
 </style>
