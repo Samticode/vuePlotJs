@@ -32,7 +32,7 @@ export default {
                 const filteredData = selectedRegions.map(region => {
                     return {
                         region,
-                        values: data.filter(d => d.region === region)
+                        values: data.filter((d, i) => d.region === region && i % 2 === 0)
                     };
                 });
 
@@ -101,7 +101,7 @@ export default {
             gsap.to('.answerText', {
                 scrollTrigger: {
                     trigger: '.intro-text',
-                    start: 'bottom 5%',
+                    start: 'bottom 0%',
                 },
                 opacity: 1,
                 x: 0,
@@ -110,7 +110,7 @@ export default {
             gsap.to('.chartContainer', {
                 scrollTrigger: {
                     trigger: '.intro-text',
-                    start: 'bottom 5%',
+                    start: 'bottom 0%',
                 },
                 opacity: 1,
                 x: 0,
